@@ -1,0 +1,32 @@
+ #pod
+ apiVersion: v1
+ kind: pod
+ metadata:
+ name: tosif-pod
+ spec: 
+ containers:
+ - name: nginx  
+ image: nginx:latest
+ ports:
+ - containerPort: 80
+
+ #Deployment example
+ apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+  name: tosif-Deployment
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tosif
+  template:
+    metadata:
+      labels:
+        app: tosif
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
